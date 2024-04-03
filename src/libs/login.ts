@@ -8,6 +8,7 @@ export const login = async () => {
     const response = await client.POST("/v2/authentication", {
       body: { email, password },
     });
+    console.log("Login success");
     return response.data;
   } catch (error) {
     console.error("Login error", error);
