@@ -7,6 +7,12 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     port: 9999,
+    //   proxy: {
+    //     "/api/": {
+    //       target: "http://local1.clm.localhost:3000/api/",
+    //       changeOrigin: true,
+    //     },
+    //   },
   },
   resolve: {
     alias: {
