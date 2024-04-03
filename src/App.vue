@@ -4,7 +4,7 @@ import { login } from "./libs/login";
 
 <template>
   <section>
-    <button @click="() => login">login</button>
+    <button @click="login">login</button>
   </section>
 </template>
 

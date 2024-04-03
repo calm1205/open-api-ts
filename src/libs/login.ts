@@ -1,20 +1,13 @@
 import axios from "axios";
 
-type LoginInput = {
-  email: string;
-  password: string;
-};
+const email = "tarou.yamada@example.com";
+const password = "9Km3u^6l3B&U4k!DqMvM";
+const endpoint = `http://local1.clm.localhost:5173/api/v2/authentication`;
+const body = `email=${encodeURIComponent(email)}&password=${encodeURIComponent(
+  password
+)}`;
 
-export const login = async ({
-  email = "tarou.yamada@example.com",
-  password = "9Km3u^6l3B&U4k!DqMvM",
-}: LoginInput) => {
-  const endpoint = `/api/v2/authentication`;
-
-  const body = `email=${encodeURIComponent(
-    email
-  )}&password=${encodeURIComponent(password)}`;
-
+export const login = async () => {
   try {
     const response = await axios.post(endpoint, body, {
       headers: {
