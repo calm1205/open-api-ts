@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { login } from "~/libs/login";
-import { hello } from "~/libs/hello";
+import { login } from "~/libs/clm/login";
+import { hello } from "~/libs/clm/hello";
 </script>
 
 <template>
@@ -18,3 +18,4 @@ import { hello } from "~/libs/hello";
   gap: 10px;
 }
 </style>
+~/libs/clm/hello~/libs/clm/login
