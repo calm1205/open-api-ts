@@ -1,0 +1,37 @@
+{
+  "info": {
+    "title": "API title",
+    "version": "0.0.1"
+  },
+  "swagger": "2.0",
+  "produces": ["application/json"],
+  "host": "example.org",
+  "basePath": "/api",
+  "paths": {
+    "/v2/sample": {
+      "get": {
+        "description": "sample api",
+        "responses": {
+          "200": {
+            "description": "get sample",
+            "schema": {
+              "$ref": "#/definitions/sampleEntity"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "sampleEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "sample id"
+        }
+      }
+    }
+  }
+}
