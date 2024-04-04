@@ -12,6 +12,8 @@ export interface paths {
         200: {
           schema: definitions["userEntities"];
         };
+        /** userが存在しない */
+        404: unknown;
       };
     };
     /** userの追加 */
