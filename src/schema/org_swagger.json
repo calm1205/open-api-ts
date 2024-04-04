@@ -8,14 +8,110 @@
   "host": "example.org",
   "basePath": "/api",
   "paths": {
-    "/v2/sample": {
+    "/v2/user": {
       "get": {
-        "description": "sampleのapi",
+        "description": "user entityを全て取得",
         "responses": {
           "200": {
-            "description": "get sample",
+            "description": "get user",
             "schema": {
-              "$ref": "#/definitions/sampleEntity"
+              "$ref": "#/definitions/userEntities"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "userの追加",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "userのリクエスト",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "post user",
+            "schema": {
+              "$ref": "#/definitions/userEntity"
+            }
+          }
+        }
+      }
+    },
+    "/v2/user/{id}": {
+      "get": {
+        "description": "user(単体)の取得",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get user",
+            "schema": {
+              "$ref": "#/definitions/userEntity"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "userの更新",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "userのリクエスト",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "put user",
+            "schema": {
+              "$ref": "#/definitions/userEntity"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "userの削除",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete user",
+            "schema": {
+              "$ref": "#/definitions/userEntity"
             }
           }
         }
@@ -23,14 +119,31 @@
     }
   },
   "definitions": {
-    "sampleEntity": {
+    "userEntity": {
+      "description": "user entity",
       "type": "object",
       "properties": {
         "id": {
           "type": "integer",
           "format": "int32",
-          "description": "sample id"
+          "description": "user id"
+        },
+        "name": {
+          "type": "string",
+          "description": "user name"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "description": "user age"
         }
+      }
+    },
+    "userEntities": {
+      "description": "user entityの配列",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/userEntity"
       }
     }
   }
