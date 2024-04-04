@@ -1,0 +1,182 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API title",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/v2/user": {
+            "get": {
+                "description": "user entityを全て取得",
+                "responses": {
+                    "200": {
+                        "description": "get user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/userEntities"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "userが存在しない"
+                    }
+                }
+            },
+            "post": {
+                "description": "userの追加",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/userEntity"
+                },
+                "responses": {
+                    "200": {
+                        "description": "post user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/userEntity"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/user/{id}": {
+            "get": {
+                "description": "user(単体)の取得",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/userEntity"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "userの更新",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/userEntity"
+                },
+                "responses": {
+                    "200": {
+                        "description": "put user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/userEntity"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "userの削除",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "delete user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/userEntity"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "//example.org/api"
+        }
+    ],
+    "components": {
+        "requestBodies": {
+            "userEntity": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/userEntity"
+                        }
+                    }
+                },
+                "description": "userのリクエスト",
+                "required": true
+            }
+        },
+        "schemas": {
+            "userEntity": {
+                "description": "user entity",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "user id"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "user name"
+                    },
+                    "age": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "user age"
+                    }
+                }
+            },
+            "userEntities": {
+                "description": "user entityの配列",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/userEntity"
+                }
+            }
+        }
+    }
+}
