@@ -10,7 +10,7 @@
   "paths": {
     "/v2/sample": {
       "get": {
-        "description": "sample api",
+        "description": "sampleのapi",
         "responses": {
           "200": {
             "description": "get sample",
