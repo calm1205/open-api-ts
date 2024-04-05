@@ -89,11 +89,11 @@ export interface paths {
 
 export interface components {
   schemas: {
-    /** @description user entity */
+    /** @description ユーザー */
     userEntity: {
       /**
        * Format: int32
-       * @description userを一意に判定するid
+       * @description ユーザーを一意に判定するid
        */
       id?: number;
       /** @description 氏名 */
@@ -109,8 +109,16 @@ export interface components {
        */
       domain?: "tech" | "sales" | "cs";
     };
-    /** @description user entityの配列 */
+    /** @description ユーザーの配列 */
     userEntities: components["schemas"]["userEntity"][];
+    /** @description 使用されていないエンティティ */
+    unusedEntity: {
+      /**
+       * Format: int32
+       * @description 使用されていないエンティティを一意に判定するid
+       */
+      id?: number;
+    };
   };
   requestBodies: {
     /** userのリクエスト */

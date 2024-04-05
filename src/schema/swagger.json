@@ -123,13 +123,13 @@
   },
   "definitions": {
     "userEntity": {
-      "description": "user entity",
+      "description": "ユーザー",
       "type": "object",
       "properties": {
         "id": {
           "type": "integer",
           "format": "int32",
-          "description": "userを一意に判定するid"
+          "description": "ユーザーを一意に判定するid"
         },
         "name": {
           "type": "string",
@@ -148,10 +148,21 @@
       }
     },
     "userEntities": {
-      "description": "user entityの配列",
+      "description": "ユーザーの配列",
       "type": "array",
       "items": {
         "$ref": "#/definitions/userEntity"
+      }
+    },
+    "unusedEntity": {
+      "description": "使用されていないエンティティ",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "使用されていないエンティティを一意に判定するid"
+        }
       }
     }
   }
