@@ -93,16 +93,21 @@ export interface components {
     userEntity: {
       /**
        * Format: int32
-       * @description user id
+       * @description userを一意に判定するid
        */
       id?: number;
-      /** @description user name */
+      /** @description 氏名 */
       name?: string;
       /**
        * Format: int32
-       * @description user age
+       * @description 年齢
        */
       age?: number;
+      /**
+       * @description 所属部署
+       * @enum {string}
+       */
+      domain?: "tech" | "sales" | "cs";
     };
     /** @description user entityの配列 */
     userEntities: components["schemas"]["userEntity"][];
