@@ -119,6 +119,19 @@
           }
         }
       }
+    },
+    "/v2/snake_case": {
+      "get": {
+        "description": "snake_caseの取得",
+        "responses": {
+          "200": {
+            "description": "get snake_case",
+            "schema": {
+              "$ref": "#/definitions/snakeCaseEntity"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -152,6 +165,20 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/userEntity"
+      }
+    },
+    "snakeCaseEntity": {
+      "description": "snake_caseのエンティティ",
+      "type": "object",
+      "properties": {
+        "user_name": {
+          "type": "string",
+          "description": "ユーザー名"
+        },
+        "snake_case": {
+          "type": "string",
+          "description": "snake_case"
+        }
       }
     },
     "unusedEntity": {

@@ -85,6 +85,19 @@ export interface paths {
       };
     };
   };
+  "/v2/snake_case": {
+    /** snake_caseの取得 */
+    get: {
+      responses: {
+        /** get snake_case */
+        200: {
+          content: {
+            "application/json": components["schemas"]["snakeCaseEntity"];
+          };
+        };
+      };
+    };
+  };
 }
 
 export interface components {
@@ -111,6 +124,13 @@ export interface components {
     };
     /** @description ユーザーの配列 */
     userEntities: components["schemas"]["userEntity"][];
+    /** @description snake_caseのエンティティ */
+    snakeCaseEntity: {
+      /** @description ユーザー名 */
+      user_name?: string;
+      /** @description snake_case */
+      snake_case?: string;
+    };
     /** @description 使用されていないエンティティ */
     unusedEntity: {
       /**
