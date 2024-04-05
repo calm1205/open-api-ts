@@ -1,4 +1,4 @@
-import { client } from "~/libs/org/api";
+import { client } from "~/api/api";
 
 export const userApi = {
   /** user全ての取得 */
