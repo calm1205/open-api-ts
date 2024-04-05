@@ -1,5 +1,8 @@
-import { client } from "~/api/api";
+import { client } from "~/api/openapiFetch";
 
+/**
+ * openapi-fetchを活用
+ */
 export const userApi = {
   /** user全ての取得 */
   getAll: async () => {
