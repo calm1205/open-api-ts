@@ -1,13 +1,8 @@
-<script setup lang="ts">
-import { login } from "~/libs/clm/login";
-import { hello } from "~/libs/clm/hello";
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <section class="wrapper">
-    <button @click="login">login</button>
-
-    <button @click="hello">hello</button>
+    <button>hello</button>
   </section>
 </template>
 
@@ -18,4 +13,3 @@ import { hello } from "~/libs/clm/hello";
   gap: 10px;
 }
 </style>
-~/libs/clm/hello~/libs/clm/login
