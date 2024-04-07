@@ -1,8 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { customAxios } from "~/api/customAxios/customAxios";
+
+const getAll = async () => {
+  const response = customAxios({
+    methods: "get",
+    endpoint: "/v1/articles",
+  });
+  console.log(response);
+};
+</script>
 
 <template>
   <section class="wrapper">
-    <button>hello</button>
+    <button @click="getAll">hello</button>
   </section>
 </template>
 

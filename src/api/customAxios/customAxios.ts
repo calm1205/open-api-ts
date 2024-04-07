@@ -49,7 +49,7 @@ export const customAxios = <T extends Methods>({
 };
 
 // 使用例
-// const getAllUser = customAxios({ methods: "get", endpoint: "/v2/user" });
+const getAllUser = customAxios({ methods: "get", endpoint: "/v1/articles" });
 // const getOneUser = customAxios({ methods: "get", endpoint: "/v2/user/{id}" });
 // const postUser = customAxios({
 //   methods: "post",

@@ -1,4 +1,4 @@
-import { client } from "~/api/openapiFetch";
+import { client } from "~/api/openapi-fetch/apiClient";
 
 /**
  * openapi-fetchを活用
