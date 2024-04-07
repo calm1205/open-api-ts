@@ -1,41 +1,52 @@
 {
     "openapi": "3.0.0",
+    "x-origin": [
+        {
+            "url": "http://localhost:3001/swagger.json",
+            "format": "swagger",
+            "version": "2.0",
+            "converter": {
+                "url": "https://github.com/mermade/oas-kit",
+                "version": "7.0.8"
+            }
+        }
+    ],
     "info": {
-        "title": "API title",
+        "title": "rest-api rails",
         "version": "0.0.1"
     },
     "paths": {
-        "/v2/user": {
+        "/v1/articles": {
             "get": {
-                "description": "user entityを全て取得",
+                "description": "article entityを全て取得",
                 "responses": {
                     "200": {
-                        "description": "get user",
+                        "description": "get article",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/userEntities"
+                                    "$ref": "#/components/schemas/articleEntities"
                                 }
                             }
                         }
                     },
                     "404": {
-                        "description": "userが存在しない"
+                        "description": "articleが存在しない"
                     }
                 }
             },
             "post": {
-                "description": "userの追加",
+                "description": "articleの追加",
                 "requestBody": {
-                    "$ref": "#/components/requestBodies/userEntity"
+                    "$ref": "#/components/requestBodies/articleEntity"
                 },
                 "responses": {
                     "200": {
-                        "description": "post user",
+                        "description": "post article",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/userEntity"
+                                    "$ref": "#/components/schemas/articleEntity"
                                 }
                             }
                         }
@@ -43,14 +54,14 @@
                 }
             }
         },
-        "/v2/user/{id}": {
+        "/v2/article/{id}": {
             "get": {
-                "description": "user(単体)の取得",
+                "description": "article(単体)の取得",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "user id",
+                        "description": "article id",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -60,11 +71,11 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "get user",
+                        "description": "get article",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/userEntity"
+                                    "$ref": "#/components/schemas/articleEntity"
                                 }
                             }
                         }
@@ -72,12 +83,12 @@
                 }
             },
             "put": {
-                "description": "userの更新",
+                "description": "articleの更新",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "user id",
+                        "description": "article id",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -86,15 +97,15 @@
                     }
                 ],
                 "requestBody": {
-                    "$ref": "#/components/requestBodies/userEntity"
+                    "$ref": "#/components/requestBodies/articleEntity"
                 },
                 "responses": {
                     "200": {
-                        "description": "put user",
+                        "description": "put article",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/userEntity"
+                                    "$ref": "#/components/schemas/articleEntity"
                                 }
                             }
                         }
@@ -102,12 +113,12 @@
                 }
             },
             "delete": {
-                "description": "userの削除",
+                "description": "articleの削除",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "user id",
+                        "description": "article id",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -117,28 +128,11 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete user",
+                        "description": "delete article",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/userEntity"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/v2/snake_case": {
-            "get": {
-                "description": "snake_caseの取得",
-                "responses": {
-                    "200": {
-                        "description": "get snake_case",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/snakeCaseEntity"
+                                    "$ref": "#/components/schemas/articleEntity"
                                 }
                             }
                         }
@@ -149,83 +143,48 @@
     },
     "servers": [
         {
-            "url": "//example.org/api"
+            "url": "//localhost:3000/api"
         }
     ],
     "components": {
         "requestBodies": {
-            "userEntity": {
+            "articleEntity": {
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/userEntity"
+                            "$ref": "#/components/schemas/articleEntity"
                         }
                     }
                 },
-                "description": "userのリクエスト",
+                "description": "articleのリクエスト",
                 "required": true
             }
         },
         "schemas": {
-            "userEntity": {
-                "description": "ユーザー",
+            "articleEntity": {
+                "description": "記事",
                 "type": "object",
                 "properties": {
                     "id": {
                         "type": "integer",
                         "format": "int32",
-                        "description": "ユーザーを一意に判定するid"
+                        "description": "記事を一意に判定するid"
                     },
                     "name": {
                         "type": "string",
-                        "description": "氏名"
+                        "description": "記事名"
                     },
-                    "age": {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "年齢"
-                    },
-                    "domain": {
+                    "body": {
                         "type": "string",
-                        "enum": [
-                            "tech",
-                            "sales",
-                            "cs"
-                        ],
-                        "description": "所属部署"
+                        "description": "記事内容"
                     }
                 }
             },
-            "userEntities": {
-                "description": "ユーザーの配列",
+            "articleEntities": {
+                "description": "記事の配列",
                 "type": "array",
                 "items": {
-                    "$ref": "#/components/schemas/userEntity"
-                }
-            },
-            "snakeCaseEntity": {
-                "description": "snake_caseのエンティティ",
-                "type": "object",
-                "properties": {
-                    "user_name": {
-                        "type": "string",
-                        "description": "ユーザー名"
-                    },
-                    "snake_case": {
-                        "type": "string",
-                        "description": "snake_case"
-                    }
-                }
-            },
-            "unusedEntity": {
-                "description": "使用されていないエンティティ",
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "使用されていないエンティティを一意に判定するid"
-                    }
+                    "$ref": "#/components/schemas/articleEntity"
                 }
             }
         }

@@ -4,150 +4,102 @@
  */
 
 export interface paths {
-  "/v2/user": {
-    /** user entityを全て取得 */
+  "/v1/articles": {
+    /** article entityを全て取得 */
     get: {
       responses: {
-        /** get user */
+        /** get article */
         200: {
-          content: {
-            "application/json": components["schemas"]["userEntities"];
-          };
+          schema: definitions["articleEntities"];
         };
-        /** userが存在しない */
+        /** articleが存在しない */
         404: unknown;
       };
     };
-    /** userの追加 */
+    /** articleの追加 */
     post: {
-      responses: {
-        /** post user */
-        200: {
-          content: {
-            "application/json": components["schemas"]["userEntity"];
-          };
+      parameters: {
+        body: {
+          /** articleのリクエスト */
+          article: definitions["articleEntity"];
         };
       };
-      requestBody: components["requestBodies"]["userEntity"];
+      responses: {
+        /** post article */
+        200: {
+          schema: definitions["articleEntity"];
+        };
+      };
     };
   };
-  "/v2/user/{id}": {
-    /** user(単体)の取得 */
+  "/v2/article/{id}": {
+    /** article(単体)の取得 */
     get: {
       parameters: {
         path: {
-          /** user id */
+          /** article id */
           id: number;
         };
       };
       responses: {
-        /** get user */
+        /** get article */
         200: {
-          content: {
-            "application/json": components["schemas"]["userEntity"];
-          };
+          schema: definitions["articleEntity"];
         };
       };
     };
-    /** userの更新 */
+    /** articleの更新 */
     put: {
       parameters: {
         path: {
-          /** user id */
+          /** article id */
           id: number;
+        };
+        body: {
+          /** articleのリクエスト */
+          article: definitions["articleEntity"];
         };
       };
       responses: {
-        /** put user */
+        /** put article */
         200: {
-          content: {
-            "application/json": components["schemas"]["userEntity"];
-          };
+          schema: definitions["articleEntity"];
         };
       };
-      requestBody: components["requestBodies"]["userEntity"];
     };
-    /** userの削除 */
+    /** articleの削除 */
     delete: {
       parameters: {
         path: {
-          /** user id */
+          /** article id */
           id: number;
         };
       };
       responses: {
-        /** delete user */
+        /** delete article */
         200: {
-          content: {
-            "application/json": components["schemas"]["userEntity"];
-          };
-        };
-      };
-    };
-  };
-  "/v2/snake_case": {
-    /** snake_caseの取得 */
-    get: {
-      responses: {
-        /** get snake_case */
-        200: {
-          content: {
-            "application/json": components["schemas"]["snakeCaseEntity"];
-          };
+          schema: definitions["articleEntity"];
         };
       };
     };
   };
 }
 
-export interface components {
-  schemas: {
-    /** @description ユーザー */
-    userEntity: {
-      /**
-       * Format: int32
-       * @description ユーザーを一意に判定するid
-       */
-      id?: number;
-      /** @description 氏名 */
-      name?: string;
-      /**
-       * Format: int32
-       * @description 年齢
-       */
-      age?: number;
-      /**
-       * @description 所属部署
-       * @enum {string}
-       */
-      domain?: "tech" | "sales" | "cs";
-    };
-    /** @description ユーザーの配列 */
-    userEntities: components["schemas"]["userEntity"][];
-    /** @description snake_caseのエンティティ */
-    snakeCaseEntity: {
-      /** @description ユーザー名 */
-      user_name?: string;
-      /** @description snake_case */
-      snake_case?: string;
-    };
-    /** @description 使用されていないエンティティ */
-    unusedEntity: {
-      /**
-       * Format: int32
-       * @description 使用されていないエンティティを一意に判定するid
-       */
-      id?: number;
-    };
+export interface definitions {
+  /** @description 記事 */
+  articleEntity: {
+    /**
+     * Format: int32
+     * @description 記事を一意に判定するid
+     */
+    id?: number;
+    /** @description 記事名 */
+    name?: string;
+    /** @description 記事内容 */
+    body?: string;
   };
-  requestBodies: {
-    /** userのリクエスト */
-    userEntity: {
-      content: {
-        "application/json": components["schemas"]["userEntity"];
-      };
-    };
-  };
+  /** @description 記事の配列 */
+  articleEntities: definitions["articleEntity"][];
 }
 
 export interface operations {}
