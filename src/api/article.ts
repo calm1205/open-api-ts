@@ -3,7 +3,7 @@ import { client } from "~/api/openapiFetch";
 /**
  * openapi-fetchを活用
  */
-export const userApi = {
+export const articleApi = {
   /** user全ての取得 */
   getAll: async () => {
     const response = await client.GET("/v1/articles");
