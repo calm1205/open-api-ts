@@ -14,9 +14,9 @@ export type Response<
   E extends Endpoint<M>
 > = M extends keyof paths[E]
   ? paths[E][M] extends {
-      responses: { 200: { content: { "application/json": any } } };
+      responses: { 200: { content: { "application/json": infer T } } };
     }
-    ? paths[E][M]["responses"][200]["content"]["application/json"]
+    ? T
     : never
   : never;
 
@@ -26,8 +26,8 @@ export type RequestBody<
   E extends Endpoint<M>
 > = M extends keyof paths[E]
   ? paths[E][M] extends {
-      requestBody: { content: { "application/json": any } };
+      requestBody: { content: { "application/json": infer T } };
     }
-    ? paths[E][M]["requestBody"]["content"]["application/json"]
+    ? T
     : never
   : never;

@@ -19,4 +19,28 @@ export const articleApi = {
 
     console.log(response.data);
   },
+
+  /** 記事の作成 */
+  create: async () => {
+    const response = await customAxios({
+      methods: "post",
+      endpoint: "/v1/articles",
+      body: {
+        name: "hoge",
+        body: "body",
+      },
+    });
+
+    return response.data.id;
+  },
+
+  /** 記事の削除 */
+  delete: async () => {
+    const response = await customAxios({
+      methods: "delete",
+      endpoint: "/v2/article/{id}",
+    });
+
+    return response;
+  },
 };

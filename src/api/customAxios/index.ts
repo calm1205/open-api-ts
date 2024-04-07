@@ -6,19 +6,16 @@ const BASE_URL = "http://localhost:3000/api";
 /**
  * axiosの拡張
  */
-export const customAxios = <T extends Methods>({
+export const customAxios = async <M extends Methods, E extends Endpoint<M>>({
   methods,
   endpoint,
   body,
 }: {
-  methods: T;
-  endpoint: Endpoint<T>;
-  body?: RequestBody<T, Endpoint<T>>;
+  methods: M;
+  endpoint: E;
+  body?: RequestBody<M, E>;
 }) => {
-  return axios[methods]<Response<T, Endpoint<T>>>(
-    `${BASE_URL}${endpoint}`,
-    body
-  );
+  return await axios[methods]<Response<M, E>>(`${BASE_URL}${endpoint}`, body);
 };
 
 // 使用例
