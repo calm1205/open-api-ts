@@ -1,5 +1,6 @@
 :root {
   line-height: 1.5;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 }
@@ -20,16 +21,13 @@ a:hover {
 }
 
 button {
+  color: white;
   border-radius: 8px;
   border: none;
   padding: 5px 10px;
-  background-color: #1a1a1a;
+  background-color: #646cff;
   cursor: pointer;
 }
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  opacity: 0.9;
 }

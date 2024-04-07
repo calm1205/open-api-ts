@@ -10,7 +10,9 @@ export interface paths {
       responses: {
         /** get article */
         200: {
-          schema: definitions["articleEntities"];
+          content: {
+            "application/json": components["schemas"]["articleEntities"];
+          };
         };
         /** articleが存在しない */
         404: unknown;
@@ -18,18 +20,15 @@ export interface paths {
     };
     /** articleの追加 */
     post: {
-      parameters: {
-        body: {
-          /** articleのリクエスト */
-          article: definitions["articleEntity"];
-        };
-      };
       responses: {
         /** post article */
         200: {
-          schema: definitions["articleEntity"];
+          content: {
+            "application/json": components["schemas"]["articleEntity"];
+          };
         };
       };
+      requestBody: components["requestBodies"]["articleEntity"];
     };
   };
   "/v2/article/{id}": {
@@ -44,7 +43,9 @@ export interface paths {
       responses: {
         /** get article */
         200: {
-          schema: definitions["articleEntity"];
+          content: {
+            "application/json": components["schemas"]["articleEntity"];
+          };
         };
       };
     };
@@ -55,17 +56,16 @@ export interface paths {
           /** article id */
           id: number;
         };
-        body: {
-          /** articleのリクエスト */
-          article: definitions["articleEntity"];
-        };
       };
       responses: {
         /** put article */
         200: {
-          schema: definitions["articleEntity"];
+          content: {
+            "application/json": components["schemas"]["articleEntity"];
+          };
         };
       };
+      requestBody: components["requestBodies"]["articleEntity"];
     };
     /** articleの削除 */
     delete: {
@@ -78,28 +78,40 @@ export interface paths {
       responses: {
         /** delete article */
         200: {
-          schema: definitions["articleEntity"];
+          content: {
+            "application/json": components["schemas"]["articleEntity"];
+          };
         };
       };
     };
   };
 }
 
-export interface definitions {
-  /** @description 記事 */
-  articleEntity: {
-    /**
-     * Format: int32
-     * @description 記事を一意に判定するid
-     */
-    id?: number;
-    /** @description 記事名 */
-    name?: string;
-    /** @description 記事内容 */
-    body?: string;
+export interface components {
+  schemas: {
+    /** @description 記事 */
+    articleEntity: {
+      /**
+       * Format: int32
+       * @description 記事を一意に判定するid
+       */
+      id?: number;
+      /** @description 記事名 */
+      name?: string;
+      /** @description 記事内容 */
+      body?: string;
+    };
+    /** @description 記事の配列 */
+    articleEntities: components["schemas"]["articleEntity"][];
   };
-  /** @description 記事の配列 */
-  articleEntities: definitions["articleEntity"][];
+  requestBodies: {
+    /** articleのリクエスト */
+    articleEntity: {
+      content: {
+        "application/json": components["schemas"]["articleEntity"];
+      };
+    };
+  };
 }
 
 export interface operations {}
