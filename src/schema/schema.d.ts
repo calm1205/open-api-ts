@@ -31,28 +31,6 @@ export interface paths {
       requestBody: components["requestBodies"]["articleEntity"];
     };
   };
-  "/hoge/": {
-    /** article(単体)の取得 */
-    get: {
-      parameters: {
-        path: {
-          /** article id */
-          id: number;
-        };
-      };
-      responses: {
-        /** get article */
-        200: {
-          content: {
-            "application/json": {
-              hello: string;
-              world: string;
-            };
-          };
-        };
-      };
-    };
-  };
   "/v2/article/{id}": {
     /** article(単体)の取得 */
     get: {

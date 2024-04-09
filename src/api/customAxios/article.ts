@@ -14,7 +14,7 @@ export const articleApi = {
   getOne: async (articleId: number) => {
     const response = await customAxios({
       methods: "get",
-      endpoint: "/v2/article/{id}",
+      endpoint: `/v2/article/${articleId}`,
     });
 
     console.log(response.data);
