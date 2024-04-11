@@ -31,7 +31,7 @@ export interface paths {
       requestBody: components["requestBodies"]["articleEntity"];
     };
   };
-  "/v2/article/{id}": {
+  "/v1/article/{id}": {
     /** article(単体)の取得 */
     get: {
       parameters: {
