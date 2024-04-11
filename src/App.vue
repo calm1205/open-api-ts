@@ -2,35 +2,47 @@
 import { ref } from "vue";
 
 import { articleApi } from "~/api/openapi-typescript/article";
+import { articleApi as articleApi2 } from "./api/openapi-typescript-fetch/article";
 
 const response = ref();
 
-const getAll = async () => {
-  const data = await articleApi.getAll();
-  response.value = JSON.stringify(data, null, 2);
-};
-const getOne = async (id: number) => {
-  const data = await articleApi.getOne(id);
-  response.value = JSON.stringify(data, null, 2);
-};
-const create = async () => {
-  const data = await articleApi.create();
-  response.value = JSON.stringify(data, null, 2);
+const openapiTypescript = {
+  getAll: async () => {
+    const data = await articleApi.getAll();
+    response.value = JSON.stringify(data, null, 2);
+  },
+  getOne: async (id: number) => {
+    const data = await articleApi.getOne(id);
+    response.value = JSON.stringify(data, null, 2);
+  },
 };
 
-const deleteArticle = async () => {
-  const data = await articleApi.delete();
-  response.value = JSON.stringify(data, null, 2);
+const openapiTypescriptFetch = {
+  getAll: async () => {
+    const { data } = await articleApi2.getAll({});
+    response.value = JSON.stringify(data, null, 2);
+  },
+  getOne: async (id: number) => {
+    const { data } = await articleApi2.getOne({ id });
+    response.value = JSON.stringify(data, null, 2);
+  },
 };
 </script>
 
 <template>
   <section class="wrapper">
     <section class="api">
-      <button @click="getAll">getAll</button>
-      <button @click="getOne(1)">getOne</button>
-      <button @click="create">create</button>
-      <button @click="deleteArticle">delete</button>
+      <div class="api-item">
+        <h2>openapi-typescript</h2>
+        <button @click="openapiTypescript.getAll">getAll</button>
+        <button @click="openapiTypescript.getOne(1)">getOne</button>
+      </div>
+
+      <div class="api-item">
+        <h2>openapi-typescript-fetch</h2>
+        <button @click="openapiTypescriptFetch.getAll">getAll</button>
+        <button @click="openapiTypescriptFetch.getOne(1)">getOne</button>
+      </div>
     </section>
 
     <section class="response">
@@ -46,16 +58,21 @@ const deleteArticle = async () => {
 }
 
 .api {
-  width: 20%;
   border-right: 1px solid gray;
   display: flex;
   flex-direction: column;
   padding: 40px 20px;
-  gap: 20px;
+  gap: 60px;
+
+  .api-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .response {
-  width: 80%;
+  flex: 1;
   padding: 40px 20px;
   overflow-y: scroll;
 }

@@ -22,6 +22,7 @@ a:hover {
 
 button {
   color: white;
+  max-width: 200px;
   border-radius: 8px;
   border: none;
   padding: 5px 10px;
