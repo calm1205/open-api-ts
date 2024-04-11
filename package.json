@@ -11,7 +11,7 @@
     "s2o-remote": "swagger2openapi http://localhost:3001/swagger.json -o ./src/schema/openapi.json",
     "schema": "npm run s2o && openapi-typescript ./src/schema/openapi.json -o ./src/schema/schema.d.ts",
     "schema-remote": "npm run s2o-remote && openapi-typescript ./src/schema/openapi.json -o ./src/schema/openapi-typescript/schema.d.ts",
-    "schema-codegen": "npx openapi --input ./src/schema/openapi.json --output ./src/schema/openapi-typescript-codegen"
+    "schema-codegen": "openapi-typescript-codegen --input ./src/schema/openapi.json --output ./src/schema/openapi-typescript-codegen"
   },
   "dependencies": {
     "axios": "^1.6.8",

@@ -6,16 +6,17 @@
  * 記事
  */
 export type articleEntity = {
-  /**
-   * 記事を一意に判定するid
-   */
-  id?: number;
-  /**
-   * 記事名
-   */
-  name?: string;
-  /**
-   * 記事内容
-   */
-  body?: string;
+    /**
+     * 記事を一意に判定するid
+     */
+    id?: number;
+    /**
+     * 記事名
+     */
+    name?: string;
+    /**
+     * 記事内容
+     */
+    body?: string;
 };
+

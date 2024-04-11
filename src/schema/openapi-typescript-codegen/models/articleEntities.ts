@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { articleEntity } from "./articleEntity";
+import type { articleEntity } from './articleEntity';
 /**
  * 記事の配列
  */
