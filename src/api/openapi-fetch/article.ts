@@ -11,7 +11,7 @@ export const articleApi = {
     console.log(articles);
   },
   getOne: async (articleId: number) => {
-    const response = await client.GET("/v2/article/{id}", {
+    const response = await client.GET("/v1/article/{id}", {
       params: {
         path: {
           id: articleId,
