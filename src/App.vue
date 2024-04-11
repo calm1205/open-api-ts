@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { articleApi } from "~/api/customAxios/article";
+import { articleApi } from "~/api/openapi-typescript/article";
 
 const response = ref();
 
