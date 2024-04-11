@@ -1,4 +1,4 @@
-import type { paths } from "~/schema/schema";
+import type { paths } from "~/schema/openapi-typescript/schema";
 
 // httpメソッド
 export type Methods = "get" | "post" | "put" | "delete";
