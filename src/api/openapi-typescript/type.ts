@@ -9,7 +9,10 @@ export type Endpoint<M extends Methods> = {
 }[keyof paths];
 
 /** path parameter */
-type Params<M extends Methods, E extends Endpoint<M>> = M extends keyof paths[E]
+export type Params<
+  M extends Methods,
+  E extends Endpoint<M>
+> = M extends keyof paths[E]
   ? paths[E][M] extends { parameters: { path: infer T } }
     ? T extends { [key: string]: string | number }
       ? T
@@ -18,20 +21,20 @@ type Params<M extends Methods, E extends Endpoint<M>> = M extends keyof paths[E]
   : never;
 
 /** endpointのURLにpath parameterを埋め込んだもの */
-type ConvertPathParams<
-  Path extends string,
-  Params extends { [key: string]: string | number }
-> = {
-  [Key in keyof Params]: Path extends `${infer Prefix}{${string &
-    Key}}${infer Suffix}`
-    ? ConvertPathParams<`${Prefix}${Params[Key]}${Suffix}`, Params>
-    : Path;
-}[keyof Params];
+// type ConvertPathParams<
+//   Path extends string,
+//   Params extends { [key: string]: string | number }
+// > = {
+//   [Key in keyof Params]: Path extends `${infer Prefix}{${string &
+//     Key}}${infer Suffix}`
+//     ? ConvertPathParams<`${Prefix}${Params[Key]}${Suffix}`, Params>
+//     : Path;
+// }[keyof Params];
 
-export type DynamicEndpoint<
-  M extends Methods,
-  E extends Endpoint<M>
-> = ConvertPathParams<E, Params<M, E>>;
+// export type DynamicEndpoint<
+//   M extends Methods,
+//   E extends Endpoint<M>
+// > = ConvertPathParams<E, Params<M, E>>;
 
 // 2xx番台のレスポンス
 export type Response<
