@@ -108,6 +108,16 @@ export interface components {
       name?: string;
       /** @description 記事内容 */
       body?: string;
+      /**
+       * Format: date-time
+       * @description 記事の作成日時
+       */
+      created_at?: string;
+      /**
+       * Format: date-time
+       * @description 記事の更新日時
+       */
+      updated_at?: string;
     };
     /** @description 記事の配列 */
     articleEntities: components["schemas"]["articleEntity"][];
