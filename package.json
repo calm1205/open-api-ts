@@ -25,6 +25,7 @@
     "openapi-typescript-codegen": "^0.29.0",
     "openapi-typescript-fetch": "^2.0.0",
     "swagger2openapi": "^7.0.8",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vue-tsc": "^2.0.6"
