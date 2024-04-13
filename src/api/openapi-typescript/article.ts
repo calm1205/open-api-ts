@@ -20,7 +20,7 @@ export const articleApi = {
     const response = await customAxios({
       methods: "get",
       endpoint: "/v1/article/{id}",
-      params: { id: articleId },
+      pathParams: { id: articleId },
     });
 
     console.log(response.data);
@@ -51,7 +51,7 @@ export const articleApi = {
     const response = await customAxios({
       methods: "delete",
       endpoint: "/v1/article/{id}",
-      params: { id: 1 },
+      pathParams: { id: 1 },
     });
 
     console.log(response.data);
