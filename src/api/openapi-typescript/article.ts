@@ -8,6 +8,10 @@ export const articleApi = {
     const response = await customAxios({
       methods: "get",
       endpoint: "/v1/articles",
+      queryParams: {
+        order: "desc",
+        order_by: "created_at",
+      },
     });
     console.log(response.data);
     return response.data;

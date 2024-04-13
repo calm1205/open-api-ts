@@ -21,7 +21,16 @@ export type PathParams<
   : never;
 
 /** query parameter */
-export type Query<M extends Methods, E extends Endpoint<M>> = any;
+export type QueryParams<
+  M extends Methods,
+  E extends Endpoint<M>
+> = M extends keyof paths[E]
+  ? paths[E][M] extends { parameters: { query: infer T } }
+    ? T extends { [key: string]: string | number }
+      ? T
+      : never
+    : never
+  : never;
 
 // 2xx番台のレスポンス
 export type Response<

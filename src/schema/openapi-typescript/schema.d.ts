@@ -12,7 +12,7 @@ export interface paths {
           /** asc or desc */
           order?: "asc" | "desc";
           /** ソートするカラム */
-          order_by?: string;
+          order_by?: "id" | "created_at" | "updated_at";
         };
       };
       responses: {
