@@ -9,7 +9,7 @@ export type Endpoint<M extends Methods> = {
 }[keyof paths];
 
 /** path parameter */
-export type Params<
+export type PathParams<
   M extends Methods,
   E extends Endpoint<M>
 > = M extends keyof paths[E]
@@ -19,6 +19,9 @@ export type Params<
       : never
     : never
   : never;
+
+/** query parameter */
+export type Query<M extends Methods, E extends Endpoint<M>> = any;
 
 // 2xx番台のレスポンス
 export type Response<

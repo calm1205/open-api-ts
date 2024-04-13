@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Endpoint, Methods, Params, RequestBody, Response } from "./type";
+import { Endpoint, Methods, PathParams, RequestBody, Response } from "./type";
 
 const BASE_URL = "http://localhost:3000/api";
 
@@ -9,16 +9,16 @@ const BASE_URL = "http://localhost:3000/api";
 export const customAxios = async <M extends Methods, E extends Endpoint<M>>({
   methods,
   endpoint,
-  params,
+  pathParams,
   body,
 }: {
   methods: M;
   endpoint: E;
-  params?: Params<M, E>;
+  pathParams?: PathParams<M, E>;
   body?: RequestBody<M, E>;
 }) => {
-  const dynamicEndpoint = params
-    ? getDynamicEndpoint(endpoint, params)
+  const dynamicEndpoint = pathParams
+    ? getDynamicEndpoint(endpoint, pathParams)
     : endpoint;
 
   return await axios[methods]<Response<M, E>>(
@@ -29,13 +29,16 @@ export const customAxios = async <M extends Methods, E extends Endpoint<M>>({
 
 const getDynamicEndpoint = (
   endpoint: string,
-  params: { [key: string]: string | number }
+  pathParams: { [key: string]: string | number }
 ) => {
-  const dynamicEndpoint = Object.entries(params).reduce((acc, [key, value]) => {
-    acc += endpoint.replace(`{${key}}`, value.toString());
+  const dynamicEndpoint = Object.entries(pathParams).reduce(
+    (acc, [key, value]) => {
+      acc += endpoint.replace(`{${key}}`, value.toString());
 
-    return acc;
-  }, "");
+      return acc;
+    },
+    ""
+  );
 
   return dynamicEndpoint;
 };
