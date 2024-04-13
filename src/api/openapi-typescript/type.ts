@@ -20,22 +20,6 @@ export type Params<
     : never
   : never;
 
-/** endpointのURLにpath parameterを埋め込んだもの */
-// type ConvertPathParams<
-//   Path extends string,
-//   Params extends { [key: string]: string | number }
-// > = {
-//   [Key in keyof Params]: Path extends `${infer Prefix}{${string &
-//     Key}}${infer Suffix}`
-//     ? ConvertPathParams<`${Prefix}${Params[Key]}${Suffix}`, Params>
-//     : Path;
-// }[keyof Params];
-
-// export type DynamicEndpoint<
-//   M extends Methods,
-//   E extends Endpoint<M>
-// > = ConvertPathParams<E, Params<M, E>>;
-
 // 2xx番台のレスポンス
 export type Response<
   M extends Methods,
@@ -59,3 +43,19 @@ export type RequestBody<
     ? T
     : never
   : never;
+
+/** endpointのURLにpath parameterを埋め込んだもの */
+// type ConvertPathParams<
+//   Path extends string,
+//   Params extends { [key: string]: string | number }
+// > = {
+//   [Key in keyof Params]: Path extends `${infer Prefix}{${string &
+//     Key}}${infer Suffix}`
+//     ? ConvertPathParams<`${Prefix}${Params[Key]}${Suffix}`, Params>
+//     : Path;
+// }[keyof Params];
+
+// export type DynamicEndpoint<
+//   M extends Methods,
+//   E extends Endpoint<M>
+// > = ConvertPathParams<E, Params<M, E>>;
