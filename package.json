@@ -7,11 +7,12 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "s2o": "swagger2openapi ./src/schema/swagger.json -o ./src/schema/openapi.json",
-    "s2o-remote": "swagger2openapi http://localhost:3001/swagger.json -o ./src/schema/openapi.json",
-    "schema": "npm run s2o && openapi-typescript ./src/schema/openapi.json -o ./src/schema/schema.d.ts",
-    "schema-remote": "npm run s2o-remote && openapi-typescript ./src/schema/openapi.json -o ./src/schema/openapi-typescript/schema.d.ts",
-    "schema-codegen": "openapi-typescript-codegen --input ./src/schema/openapi.json --output ./src/schema/openapi-typescript-codegen"
+    "swagger2openapi": "swagger2openapi ./src/schema/swagger.json -o ./src/schema/openapi.json",
+    "swagger2openapi-remote": "swagger2openapi http://localhost:3001/swagger.json -o ./src/schema/openapi.json",
+    "openapi2schema": "openapi-typescript ./src/schema/openapiCamel.json -o ./src/schema/openapi-typescript/schema.d.ts",
+    "schema-codegen": "openapi-typescript-codegen --input ./src/schema/openapi.json --output ./src/schema/openapi-typescript-codegen",
+    "openapi2camel": "ts-node --esm ./src/api/openapi-typescript/jsonCamelize.ts",
+    "schema": "npm run swagger2openapi-remote && npm run openapi2camel && npm run openapi2schema"
   },
   "dependencies": {
     "axios": "^1.6.8",
