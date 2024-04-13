@@ -7,6 +7,14 @@ export interface paths {
   "/v1/articles": {
     /** article entityを全て取得 */
     get: {
+      parameters: {
+        query: {
+          /** asc or desc */
+          order?: "asc" | "desc";
+          /** ソートするカラム */
+          order_by?: string;
+        };
+      };
       responses: {
         /** get article */
         200: {
