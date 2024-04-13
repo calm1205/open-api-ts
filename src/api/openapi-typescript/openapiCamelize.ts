@@ -3,6 +3,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { toCamel } from "../../lib/toCamel";
 
 /**
  * openapi.jsonのスキーマをキャメルケースに変換
@@ -16,16 +17,12 @@ const openapi = fs.readFileSync(filepath, "utf8");
 const openapiJson = JSON.parse(openapi);
 
 const schemas = openapiJson.components.schemas;
-const snakeToCamel = (str: string) =>
-  str.replace(/([-_][a-z])/g, (group) =>
-    group.toUpperCase().replace("-", "").replace("_", "")
-  );
 
 const snakeToCamelDeep = (argObject: any) => {
   if (typeof argObject !== "object") return argObject;
 
   return Object.entries(argObject).reduce((acc, [key, value]) => {
-    const camelKey = snakeToCamel(key);
+    const camelKey = toCamel(key);
     acc[camelKey] = snakeToCamelDeep(value);
     return acc;
   }, {} as { [key: string]: any });
