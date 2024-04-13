@@ -112,12 +112,12 @@ export interface components {
        * Format: date-time
        * @description 記事の作成日時
        */
-      created_at?: string;
+      createdAt?: string;
       /**
        * Format: date-time
        * @description 記事の更新日時
        */
-      updated_at?: string;
+      updatedAt?: string;
     };
     /** @description 記事の配列 */
     articleEntities: components["schemas"]["articleEntity"][];
