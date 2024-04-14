@@ -3,15 +3,12 @@ import { toCamel } from "./toCamel";
 type SnakeToCamelString<T extends string> = T extends `${infer R}_${infer U}`
   ? `${R}${Capitalize<SnakeToCamelString<U>>}`
   : T;
-
 type SnakeToCamelArray<T extends any[]> = SnakeToCamelObject<T[number]>[];
-
 type SnakeToCamelObject<T> = {
   [K in keyof T as `${SnakeToCamelString<string & K>}`]: SnakeToCamelObject<
     T[K]
   >;
 };
-
 type SnakeToCamel<T extends object | any[]> = T extends any[]
   ? SnakeToCamelArray<T>
   : SnakeToCamelObject<T>;
