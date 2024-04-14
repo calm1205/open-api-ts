@@ -9,28 +9,26 @@ export type Endpoint<M extends Methods> = {
 }[keyof paths];
 
 /** path parameter */
-export type PathParams<
-  M extends Methods,
-  E extends Endpoint<M>
-> = M extends keyof paths[E]
-  ? paths[E][M] extends { parameters: { path: infer T } }
-    ? T extends { [key: string]: string | number }
-      ? T
+export type PathParams<M extends Methods> = {
+  [Key in Endpoint<M>]: M extends keyof paths[Key]
+    ? paths[Key][M] extends { parameters: { path: infer T } }
+      ? T extends { [key: string]: string | number }
+        ? T
+        : never
       : never
-    : never
-  : never;
+    : never;
+}[Endpoint<M>];
 
 /** query parameter */
-export type QueryParams<
-  M extends Methods,
-  E extends Endpoint<M>
-> = M extends keyof paths[E]
-  ? paths[E][M] extends { parameters: { query: infer T } }
-    ? T extends { [key: string]: string | number }
-      ? T
+export type QueryParams<M extends Methods> = {
+  [Key in Endpoint<M>]: M extends keyof paths[Key]
+    ? paths[Key][M] extends { parameters: { query: infer T } }
+      ? T extends { [key: string]: string | number }
+        ? T
+        : never
       : never
-    : never
-  : never;
+    : never;
+}[Endpoint<M>];
 
 // 2xx番台のレスポンス
 export type Response<
@@ -60,14 +58,13 @@ export type RequestBody<
 // type ConvertPathParams<
 //   Path extends string,
 //   Params extends { [key: string]: string | number }
-// > = {
-//   [Key in keyof Params]: Path extends `${infer Prefix}{${string &
-//     Key}}${infer Suffix}`
-//     ? ConvertPathParams<`${Prefix}${Params[Key]}${Suffix}`, Params>
-//     : Path;
-// }[keyof Params];
+// > = Path extends `${infer Prefix}{${infer K}}${infer Suffix}`
+//   ? ConvertPathParams<`${Prefix}${Params[K]}${Suffix}`, Params>
+//   : Path;
 
-// export type DynamicEndpoint<
-//   M extends Methods,
-//   E extends Endpoint<M>
-// > = ConvertPathParams<E, Params<M, E>>;
+// export type DynamicEndpoint<M extends Methods> = ConvertPathParams<
+//   Endpoint<M>,
+//   PathParams<M>
+// >;
+
+// type Sample = DynamicEndpoint<"get">;

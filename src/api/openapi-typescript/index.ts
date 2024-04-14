@@ -22,8 +22,8 @@ export const customAxios = async <M extends Methods, E extends Endpoint<M>>({
 }: {
   methods: M;
   endpoint: E;
-  pathParams?: PathParams<M, E>;
-  queryParams?: QueryParams<M, E>;
+  pathParams?: PathParams<M>;
+  queryParams?: QueryParams<M>;
   body?: RequestBody<M, E>;
 }) => {
   const dynamicEndpoint = pathParams
