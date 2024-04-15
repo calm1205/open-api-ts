@@ -6,7 +6,9 @@ import { client } from "~/api/openapi-fetch/apiClient";
 export const articleApi = {
   /** user全ての取得 */
   getAll: async () => {
-    const response = await client.GET("/v1/articles");
+    const response = await client.GET("/v1/articles", {
+      params: { query: {} },
+    });
     const articles = response.data;
     console.log(articles);
   },
