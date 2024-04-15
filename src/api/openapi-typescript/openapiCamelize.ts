@@ -3,7 +3,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { toCamelDeep } from "~/lib/toCamelDeep";
+import { snake2CamelDeep } from "~/lib/snake2CamelDeep";
 
 /**
  * openapi.jsonのスキーマをキャメルケースに変換
@@ -18,7 +18,7 @@ const openapiJson = JSON.parse(openapi);
 
 const schemas = openapiJson.components.schemas;
 
-const camelSchemas = toCamelDeep(schemas);
+const camelSchemas = snake2CamelDeep(schemas);
 
 openapiJson.components.schemas = camelSchemas;
 

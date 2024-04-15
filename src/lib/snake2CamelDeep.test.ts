@@ -1,4 +1,4 @@
-import { toCamelDeep } from "./toCamelDeep";
+import { snake2CamelDeep } from "./snake2CamelDeep";
 
 const snakeCaseObject1 = {
   first_name: "John",
@@ -24,7 +24,7 @@ const snakeCaseObject1 = {
 };
 
 try {
-  const camelCaseObject1 = toCamelDeep(snakeCaseObject1);
+  const camelCaseObject1 = snake2CamelDeep(snakeCaseObject1);
   const result =
     JSON.stringify(camelCaseObject1) ===
     JSON.stringify({

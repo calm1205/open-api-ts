@@ -1,8 +1,4 @@
-import { toCamel } from "./toCamel";
-
-type CamelToSnakeCase<S extends string> = S extends `${infer T}${infer U}`
-  ? `${T extends Capitalize<T> ? "_" : ""}${Lowercase<T>}${CamelToSnakeCase<U>}`
-  : S;
+import { snake2Camel } from "./snake2Camel";
 
 type SnakeToCamelString<T extends string> = T extends `${infer R}_${infer U}`
   ? `${R}${Capitalize<SnakeToCamelString<U>>}`
@@ -17,18 +13,18 @@ type SnakeToCamel<T extends object | any[]> = T extends any[]
   ? SnakeToCamelArray<T>
   : SnakeToCamelObject<T>;
 
-export const toCamelDeep = <T extends object | any[]>(
+export const snake2CamelDeep = <T extends object | any[]>(
   argObject: T
 ): SnakeToCamel<T> => {
   if (typeof argObject !== "object") return argObject;
   if (Array.isArray(argObject))
-    return argObject.map(toCamelDeep) as SnakeToCamel<T>;
+    return argObject.map(snake2CamelDeep) as SnakeToCamel<T>;
 
   const camelizeObject = Object.entries(
     argObject as { [key: string]: any }
   ).reduce((acc, [key, value]) => {
-    const camelKey = toCamel(key);
-    acc[camelKey] = toCamelDeep(value);
+    const camelKey = snake2Camel(key);
+    acc[camelKey] = snake2CamelDeep(value);
     return acc;
   }, {} as { [key: string]: any });
 
