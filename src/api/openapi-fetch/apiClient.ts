@@ -1,7 +1,7 @@
 import createClient, { Middleware } from "openapi-fetch";
 import { camel2SnakeDeep } from "~/lib/camel2Snake/camel2SnakeDeep";
 import { Snake2CamelObject } from "~/lib/snake2Camel/snake2Camel.type";
-import { snake2CamelDeep } from "~/lib/snake2Camel/snake2CamelDeep";
+// import { snake2CamelDeep } from "~/lib/snake2Camel/snake2CamelDeep";
 import type { paths } from "~/schema/openapi-typescript/schema";
 
 const baseUrl = "http://localhost:3000/api/";
