@@ -27,10 +27,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
+              "enum": ["asc", "desc"]
             }
           },
           {
@@ -40,11 +37,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "enum": [
-                "id",
-                "created_at",
-                "updated_at"
-              ]
+              "enum": ["id", "created_at", "updated_at"]
             }
           }
         ],

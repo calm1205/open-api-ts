@@ -1,8 +1,8 @@
 import axios from "axios";
 import {
-  DynamicEndpoint,
   Endpoint,
   Methods,
+  PathParams,
   QueryParams,
   RequestBody,
   Response,
@@ -10,6 +10,23 @@ import {
 
 const BASE_URL = "http://localhost:3000/api";
 
+/** endpointのURLにpath parameterを埋め込んだもの */
+type ConvertPathParams<
+  Path extends string,
+  Params extends { [key: string]: string | number }
+> = Path extends `${infer Prefix}{${infer K}}${infer Suffix}`
+  ? ConvertPathParams<`${Prefix}${Params[K]}${Suffix}`, Params>
+  : `${Path}`;
+
+export type DynamicEndpoint<M extends Methods> = ConvertPathParams<
+  Endpoint<M>,
+  PathParams<M>
+>;
+
+/**
+ * @experimental
+ * `/v1/article/${number}`のようなpathParamsを埋め込んだendpointを返す想定
+ */
 export const customAxiosDynamic = async <M extends Methods>({
   methods,
   endpoint,
@@ -35,10 +52,3 @@ const getQueryParams = (queryParams?: { [key: string]: string | number }) => {
     return acc;
   }, "?");
 };
-
-const getArticle = customAxiosDynamic({
-  methods: "get",
-  endpoint: "/v1/articles",
-});
-
-getArticle;
