@@ -27,7 +27,7 @@ export const articleApi = {
       pathParams: { id: articleId },
     });
 
-    console.log(response.data.createdAt);
+    console.log(response);
     return response.data;
   },
 

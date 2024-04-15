@@ -41,7 +41,10 @@ export const customAxios = async <M extends Methods, E extends Endpoint<M>>({
     body
   );
 
-  return snake2CamelDeep(response);
+  return {
+    ...response,
+    data: snake2CamelDeep(response.data),
+  };
 };
 
 const getDynamicEndpoint = (endpoint: string, pathParams: object) => {
