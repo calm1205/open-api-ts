@@ -1,5 +1,9 @@
 import { toCamel } from "./toCamel";
 
+type CamelToSnakeCase<S extends string> = S extends `${infer T}${infer U}`
+  ? `${T extends Capitalize<T> ? "_" : ""}${Lowercase<T>}${CamelToSnakeCase<U>}`
+  : S;
+
 type SnakeToCamelString<T extends string> = T extends `${infer R}_${infer U}`
   ? `${R}${Capitalize<SnakeToCamelString<U>>}`
   : T;
