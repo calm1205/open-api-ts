@@ -7,7 +7,12 @@ export const articleApi = {
   /** user全ての取得 */
   getAll: async () => {
     const response = await client.GET("/v1/articles", {
-      params: { query: {} },
+      params: {
+        query: {
+          order: "desc",
+          orderBy: "created_at",
+        },
+      },
     });
     const articles = response.data;
     console.log(articles);
@@ -15,9 +20,7 @@ export const articleApi = {
   getOne: async (articleId: number) => {
     const response = await client.GET("/v1/article/{article_id}", {
       params: {
-        path: {
-          article_id: articleId,
-        },
+        path: { articleId },
       },
     });
 
