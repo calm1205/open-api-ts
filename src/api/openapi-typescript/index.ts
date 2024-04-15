@@ -1,6 +1,5 @@
 import axios from "axios";
 import {
-  // DynamicEndpoint,
   Endpoint,
   Methods,
   PathParams,
@@ -61,24 +60,3 @@ const getQueryParams = (queryParams?: { [key: string]: string | number }) => {
   }, "?");
 };
 
-// export const customAxiosDynamic = async <M extends Methods>({
-//   methods,
-//   endpoint,
-//   queryParams,
-//   body,
-// }: {
-//   methods: M;
-//   endpoint: DynamicEndpoint<M>;
-//   queryParams?: QueryParams<M>;
-//   body?: RequestBody<M, Endpoint<M>>;
-// }) => {
-//   return await axios[methods]<Response<M, Endpoint<M>>>(
-//     `${BASE_URL}${endpoint}${getQueryParams(queryParams)}`,
-//     body
-//   );
-// };
-
-// const getArticle = customAxiosDynamic({
-//   methods: "get",
-//   endpoint: "/v1/articles",
-// });

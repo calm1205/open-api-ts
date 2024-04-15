@@ -55,16 +55,16 @@ export type RequestBody<
   : never;
 
 /** endpointのURLにpath parameterを埋め込んだもの */
-// type ConvertPathParams<
-//   Path extends string,
-//   Params extends { [key: string]: string | number }
-// > = Path extends `${infer Prefix}{${infer K}}${infer Suffix}`
-//   ? ConvertPathParams<`${Prefix}${Params[K]}${Suffix}`, Params>
-//   : Path;
+type ConvertPathParams<
+  Path extends string,
+  Params extends { [key: string]: string | number }
+> = Path extends `${infer Prefix}{${infer K}}${infer Suffix}`
+  ? ConvertPathParams<`${Prefix}${Params[K]}${Suffix}`, Params>
+  : `${Path}`;
 
-// export type DynamicEndpoint<M extends Methods> = ConvertPathParams<
-//   Endpoint<M>,
-//   PathParams<M>
-// >;
+export type DynamicEndpoint<M extends Methods> = ConvertPathParams<
+  Endpoint<M>,
+  PathParams<M>
+>;
 
-// type Sample = DynamicEndpoint<"get">;
+type Sample = DynamicEndpoint<"get">;
