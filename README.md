@@ -24,15 +24,29 @@ $ npm run schema-remote
 
 ## [openapi-fetch](https://openapi-ts.pages.dev/openapi-fetch/)
 
+`openapi-typescript`に依存。
 `openapi-fetch` は `openapi-typescript`の付属ライブラリ
 
-型付きのクライアント用の fetch 関数を生成する
+| 特定 API のみの抽出 | 型のみの抽出 | Enum 変換 | カスタマイズ性 |
+| ------------------- | ------------ | --------- | -------------- |
+| x                   | ○            | ○         | △              |
+
+型付きのクライアント用の fetch 関数を生成する。
+
+middleware を追加することで、リクエストやレスポンスをカスタマイズできる。
+
+はずだが、`openapi-fetch`のドキュメント通りに実装するものの、型が合わないエラーが発生する。
 
 <br/><br/>
 
 ## [openapi-typescript-fetch](https://github.com/ajaishankar/openapi-typescript-fetch)
 
+`openapi-typescript`に依存。
 `openapi-typescript-fetch`は`openapi-typescript`から派生した亜流ライブラリ
+
+| 特定 API のみの抽出 | 型のみの抽出 | Enum 変換 | カスタマイズ性 |
+| ------------------- | ------------ | --------- | -------------- |
+| x                   | ○            | ○         | △              |
 
 `openapi-fetch`が誕生する前から存在している。
 
