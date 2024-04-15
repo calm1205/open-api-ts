@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { articleApi as openapiTypescript } from "~/api/openapi-typescript/article";
+import { articleApi as openapiFetch } from "~/api/openapi-fetch/article";
 import { articleApi as openapiTypescriptFetch } from "~/api/openapi-typescript-fetch/article";
 import { articleApi as openapiTypescriptCodegen } from "~/api/openapi-typescript-codegen/api";
 </script>
@@ -10,6 +11,12 @@ import { articleApi as openapiTypescriptCodegen } from "~/api/openapi-typescript
       <h2>openapi-typescript</h2>
       <button @click="openapiTypescript.getAll">getAll</button>
       <button @click="openapiTypescript.getOne(1)">getOne</button>
+    </div>
+
+    <div class="api">
+      <h2>openapi-fetch</h2>
+      <button @click="openapiFetch.getAll">getAll</button>
+      <button @click="openapiFetch.getOne(1)">getOne</button>
     </div>
 
     <div class="api">
