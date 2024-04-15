@@ -3,7 +3,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { snake2CamelDeep } from "~/lib/snake2CamelDeep";
+import { snake2CamelDeep } from "~/lib/snake2Camel/snake2CamelDeep";
 
 /**
  * openapi.jsonのスキーマをキャメルケースに変換

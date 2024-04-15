@@ -29,7 +29,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/lib/snake2Camel.ts"
+    "src/lib/snake2Camel/snake2Camel.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
   "ts-node": {
