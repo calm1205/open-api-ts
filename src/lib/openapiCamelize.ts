@@ -3,7 +3,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { snake2CamelDeep } from "~/lib/snake2Camel/snake2CamelDeep";
+import { snake2CamelDeep } from "./snake2Camel/snake2CamelDeep";
 
 /**
  * openapi.jsonのスキーマをキャメルケースに変換
@@ -12,7 +12,7 @@ import { snake2CamelDeep } from "~/lib/snake2Camel/snake2CamelDeep";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const filepath = path.resolve(__dirname, "../../schema/openapi.json");
+const filepath = path.resolve(__dirname, "../schema/openapi.json");
 const openapi = fs.readFileSync(filepath, "utf8");
 const openapiJson = JSON.parse(openapi);
 
@@ -22,5 +22,5 @@ const camelSchemas = snake2CamelDeep(schemas);
 
 openapiJson.components.schemas = camelSchemas;
 
-const outputPath = path.resolve(__dirname, "../../schema/openapiCamel.json");
+const outputPath = path.resolve(__dirname, "../schema/openapiCamel.json");
 fs.writeFileSync(outputPath, JSON.stringify(openapiJson, null, 2));
