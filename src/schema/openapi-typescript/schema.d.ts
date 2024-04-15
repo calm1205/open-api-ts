@@ -39,13 +39,13 @@ export interface paths {
       requestBody: components["requestBodies"]["articleEntity"];
     };
   };
-  "/v1/article/{id}": {
+  "/v1/article/{article_id}": {
     /** article(単体)の取得 */
     get: {
       parameters: {
         path: {
           /** article id */
-          id: number;
+          article_id: number;
         };
       };
       responses: {
@@ -62,7 +62,7 @@ export interface paths {
       parameters: {
         path: {
           /** article id */
-          id: number;
+          article_id: number;
         };
       };
       responses: {
@@ -80,7 +80,7 @@ export interface paths {
       parameters: {
         path: {
           /** article id */
-          id: number;
+          article_id: number;
         };
       };
       responses: {

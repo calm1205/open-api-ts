@@ -23,8 +23,8 @@ export const articleApi = {
   getOne: async (articleId: number) => {
     const response = await customAxios({
       methods: "get",
-      endpoint: "/v1/article/{id}",
-      pathParams: { id: articleId },
+      endpoint: "/v1/article/{article_id}",
+      pathParams: { articleId },
     });
 
     console.log(response);
@@ -51,11 +51,11 @@ export const articleApi = {
   /**
    * 記事の削除
    * */
-  delete: async () => {
+  delete: async (articleId: number) => {
     const response = await customAxios({
       methods: "delete",
-      endpoint: "/v1/article/{id}",
-      pathParams: { id: 1 },
+      endpoint: "/v1/article/{article_id}",
+      pathParams: { articleId },
     });
 
     console.log(response.data);

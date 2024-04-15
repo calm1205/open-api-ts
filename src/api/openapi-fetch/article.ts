@@ -13,10 +13,10 @@ export const articleApi = {
     console.log(articles);
   },
   getOne: async (articleId: number) => {
-    const response = await client.GET("/v1/article/{id}", {
+    const response = await client.GET("/v1/article/{article_id}", {
       params: {
         path: {
-          id: articleId,
+          article_id: articleId,
         },
       },
     });

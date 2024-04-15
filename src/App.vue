@@ -22,7 +22,9 @@ import { articleApi as openapiTypescriptCodegen } from "~/api/openapi-typescript
     <div class="api">
       <h2>openapi-typescript-fetch</h2>
       <button @click="openapiTypescriptFetch.getAll">getAll</button>
-      <button @click="openapiTypescriptFetch.getOne({ id: 1 })">getOne</button>
+      <button @click="openapiTypescriptFetch.getOne({ article_id: 1 })">
+        getOne
+      </button>
     </div>
 
     <div class="api">
