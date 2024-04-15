@@ -59,4 +59,3 @@ const getQueryParams = (queryParams?: { [key: string]: string | number }) => {
     return acc;
   }, "?");
 };
-

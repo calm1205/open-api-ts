@@ -1,4 +1,4 @@
-import { customAxios } from ".";
+import { customAxios } from "./axiosCaseConvert";
 
 export const articleApi = {
   /**
@@ -10,7 +10,7 @@ export const articleApi = {
       endpoint: "/v1/articles",
       queryParams: {
         order: "desc",
-        order_by: "created_at",
+        orderBy: "created_at",
       },
     });
     console.log(response.data);

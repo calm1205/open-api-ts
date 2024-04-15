@@ -36,9 +36,13 @@ export type Response<
   E extends Endpoint<M>
 > = M extends keyof paths[E]
   ? paths[E][M] extends {
-      responses: { 200: { content: { "application/json": infer T } } };
+      responses: {
+        200: { content: { "application/json": infer T } };
+      };
     }
-    ? T
+    ? T extends object
+      ? T
+      : never
     : never
   : never;
 
@@ -50,6 +54,8 @@ export type RequestBody<
   ? paths[E][M] extends {
       requestBody: { content: { "application/json": infer T } };
     }
-    ? T
+    ? T extends object
+      ? T
+      : never
     : never
   : never;
