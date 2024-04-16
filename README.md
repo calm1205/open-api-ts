@@ -64,11 +64,13 @@ middleware を追加することで、リクエストやレスポンスをカス
 
 ## [swagger-typescript-api](https://github.com/acacode/swagger-typescript-api)
 
+`swagger-typescript-api`は、型とクライアント用の fetch 関数を生成する
+
 <br/><br/>
 
 ## [openapi-generator-cli](https://openapi-generator.tech/)
 
-Java Runtime が必要?
+Java Runtime が必要?そもそも生成できていない。
 
 <br/><br/>
 
