@@ -66,4 +66,10 @@ middleware を追加することで、リクエストやレスポンスをカス
 
 <br/><br/>
 
+## [openapi-generator-cli](https://openapi-generator.tech/)
+
+Java Runtime が必要?
+
+<br/><br/>
+
 ## etc
