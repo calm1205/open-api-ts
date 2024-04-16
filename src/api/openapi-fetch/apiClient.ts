@@ -23,7 +23,7 @@ const middleware: Middleware = {
     const query = req.params.query;
     const path = req.params.path;
 
-    return {
+    const customRequest = {
       ...req,
       params: {
         ...req.params,
@@ -31,6 +31,8 @@ const middleware: Middleware = {
         path: path ? camel2SnakeDeep(path) : undefined,
       },
     };
+
+    return req;
   },
   async onResponse(res, _options) {
     const { body, ...responseOption } = res;
