@@ -26,6 +26,7 @@
     "openapi-typescript": "~5.4.2",
     "openapi-typescript-codegen": "^0.29.0",
     "openapi-typescript-fetch": "^2.0.0",
+    "swagger-typescript-api": "^13.0.3",
     "swagger2openapi": "^7.0.8",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",

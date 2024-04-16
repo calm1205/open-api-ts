@@ -3,6 +3,7 @@ import { articleApi as openapiTypescript } from "~/api/openapi-typescript/articl
 import { articleApi as openapiFetch } from "~/api/openapi-fetch/article";
 import { articleApi as openapiTypescriptFetch } from "~/api/openapi-typescript-fetch/article";
 import { articleApi as openapiTypescriptCodegen } from "~/api/openapi-typescript-codegen/api";
+import { articleApi as swaggerTypescriptApi } from "~/api/swagger-typescript-api/article";
 </script>
 
 <template>
@@ -28,6 +29,12 @@ import { articleApi as openapiTypescriptCodegen } from "~/api/openapi-typescript
     <div class="api">
       <h2>openapi-typescript-codegen</h2>
       <button @click="openapiTypescriptCodegen.getAll">getAll</button>
+    </div>
+
+    <div class="api">
+      <h2>swagger-typescript-api</h2>
+      <button @click="swaggerTypescriptApi.getAll">getAll</button>
+      <button @click="swaggerTypescriptApi.getOne(1)">getOne</button>
     </div>
   </section>
 </template>
