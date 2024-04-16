@@ -21,6 +21,7 @@
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.13.1",
     "@types/node": "^20.12.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "openapi-fetch": "^0.9.3",
