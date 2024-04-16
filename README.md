@@ -63,7 +63,9 @@ middleware 側の設定されできれば一番簡易的にカスタマイズで
 
 ## [swagger-typescript-api](https://github.com/acacode/swagger-typescript-api)
 
-`swagger-typescript-api`は、型とクライアント用の fetch 関数を生成する
+`swagger-typescript-api`は、型とクライアント用の fetch 関数を生成する。
+
+クライアント関数と密着した型が生成されるため型の上書きが面倒。
 
 <br/><br/>
 
