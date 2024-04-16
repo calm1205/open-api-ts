@@ -1,7 +1,5 @@
 # openapi2typescript
 
-todo: snake_case -> camelCase に変換
-
 <br/>
 
 ## [openapi-typescript](https://openapi-ts.pages.dev/)
