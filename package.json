@@ -13,7 +13,8 @@
     "openapiCamel2schema": "openapi-typescript ./src/schema/openapiCamel.json -o ./src/schema/openapi-typescript/schema.d.ts",
     "openapi2camel": "ts-node --esm ./src/lib/openapiCamelize.ts",
     "schema": "npm run swagger2openapi-remote && npm run openapi2schema",
-    "schema-codegen": "openapi-typescript-codegen --input ./src/schema/openapi.json --output ./src/schema/openapi-typescript-codegen"
+    "schema-codegen": "openapi-typescript-codegen --input ./src/schema/openapi.json --output ./src/schema/openapi-typescript-codegen",
+    "schema-sta": "sta -p ./src/schema/openapi.json -o ./src/schema/swagger-typescript-api --axios"
   },
   "dependencies": {
     "axios": "^1.6.8",
@@ -26,6 +27,7 @@
     "openapi-typescript": "~5.4.2",
     "openapi-typescript-codegen": "^0.29.0",
     "openapi-typescript-fetch": "^2.0.0",
+    "swagger-typescript-api": "^13.0.3",
     "swagger2openapi": "^7.0.8",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
