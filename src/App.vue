@@ -12,6 +12,7 @@ import { articleApi as swaggerTypescriptApi } from "~/api/swagger-typescript-api
       <h2>openapi-typescript</h2>
       <button @click="openapiTypescript.getAll">getAll</button>
       <button @click="openapiTypescript.getOne(1)">getOne</button>
+      <button @click="openapiTypescript.getOne(99)">getOne fail</button>
     </div>
 
     <div class="api">

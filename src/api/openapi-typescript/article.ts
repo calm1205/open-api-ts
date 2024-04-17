@@ -21,14 +21,17 @@ export const articleApi = {
    *  指定の記事を取得
    * */
   getOne: async (articleId: number) => {
-    const response = await customAxios({
-      methods: "get",
-      endpoint: "/v1/article/{article_id}",
-      pathParams: { articleId },
-    });
-
-    console.log(response);
-    return response.data;
+    try {
+      const response = await customAxios({
+        methods: "get",
+        endpoint: "/v1/article/{article_id}",
+        pathParams: { articleId },
+      });
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      console.error("error: ", { cause: error });
+    }
   },
 
   /**
