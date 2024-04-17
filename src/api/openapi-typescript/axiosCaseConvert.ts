@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import {
   Endpoint,
   Methods,
@@ -31,12 +31,12 @@ export const customAxios = async <M extends Methods, E extends Endpoint<M>>({
   pathParams?: Snake2CamelObject<PathParams<M>>;
   queryParams?: Snake2CamelObject<QueryParams<M>>;
   body?: Snake2Camel<RequestBody<M, E>>;
-}) => {
+}): Promise<AxiosResponse<Snake2Camel<SuccessResponse<M, E>>>> => {
   const dynamicEndpoint = pathParams
     ? getDynamicEndpoint(endpoint, camel2SnakeDeep(pathParams))
     : endpoint;
 
-  const response = await axios[methods]<Snake2Camel<SuccessResponse<M, E>>>(
+  const response = await axios[methods]<SuccessResponse<M, E>>(
     `${BASE_URL}${dynamicEndpoint}${getQueryParams(queryParams)}`,
     body
   );
