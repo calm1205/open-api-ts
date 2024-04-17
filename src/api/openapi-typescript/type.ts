@@ -22,7 +22,7 @@ export type PathParams<M extends Methods> = {
 /** query parameter */
 export type QueryParams<M extends Methods> = {
   [Key in Endpoint<M>]: M extends keyof paths[Key]
-    ? paths[Key][M] extends { parameters: { query: infer T } }
+    ? paths[Key][M] extends { parameters: { query?: infer T } }
       ? T extends { [key: string]: string | number }
         ? T
         : never

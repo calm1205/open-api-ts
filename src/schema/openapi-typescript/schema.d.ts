@@ -5,51 +5,53 @@
 
 export interface paths {
   "/v1/articles": {
-    /** article entityを全て取得 */
+    /** @description article entityを全て取得 */
     get: {
       parameters: {
-        query: {
-          /** asc or desc */
+        query?: {
+          /** @description asc or desc */
           order?: "asc" | "desc";
-          /** ソートするカラム */
+          /** @description ソートするカラム */
           order_by?: "id" | "created_at" | "updated_at";
         };
       };
       responses: {
-        /** get article */
+        /** @description get article */
         200: {
           content: {
             "application/json": components["schemas"]["articleEntities"];
           };
         };
-        /** articleが存在しない */
-        404: unknown;
+        /** @description articleが存在しない */
+        404: {
+          content: never;
+        };
       };
     };
-    /** articleの追加 */
+    /** @description articleの追加 */
     post: {
+      requestBody: components["requestBodies"]["articleEntity"];
       responses: {
-        /** post article */
+        /** @description post article */
         200: {
           content: {
             "application/json": components["schemas"]["articleEntity"];
           };
         };
       };
-      requestBody: components["requestBodies"]["articleEntity"];
     };
   };
   "/v1/article/{article_id}": {
-    /** article(単体)の取得 */
+    /** @description article(単体)の取得 */
     get: {
       parameters: {
         path: {
-          /** article id */
+          /** @description article id */
           article_id: number;
         };
       };
       responses: {
-        /** get article */
+        /** @description get article */
         200: {
           content: {
             "application/json": components["schemas"]["articleEntity"];
@@ -57,34 +59,34 @@ export interface paths {
         };
       };
     };
-    /** articleの更新 */
+    /** @description articleの更新 */
     put: {
       parameters: {
         path: {
-          /** article id */
+          /** @description article id */
           article_id: number;
         };
       };
+      requestBody: components["requestBodies"]["articleEntity"];
       responses: {
-        /** put article */
+        /** @description put article */
         200: {
           content: {
             "application/json": components["schemas"]["articleEntity"];
           };
         };
       };
-      requestBody: components["requestBodies"]["articleEntity"];
     };
-    /** articleの削除 */
+    /** @description articleの削除 */
     delete: {
       parameters: {
         path: {
-          /** article id */
+          /** @description article id */
           article_id: number;
         };
       };
       responses: {
-        /** delete article */
+        /** @description delete article */
         200: {
           content: {
             "application/json": components["schemas"]["articleEntity"];
@@ -94,6 +96,8 @@ export interface paths {
     };
   };
 }
+
+export type webhooks = Record<string, never>;
 
 export interface components {
   schemas: {
@@ -122,16 +126,22 @@ export interface components {
     /** @description 記事の配列 */
     articleEntities: components["schemas"]["articleEntity"][];
   };
+  responses: never;
+  parameters: never;
   requestBodies: {
-    /** articleのリクエスト */
+    /** @description articleのリクエスト */
     articleEntity: {
       content: {
         "application/json": components["schemas"]["articleEntity"];
       };
     };
   };
+  headers: never;
+  pathItems: never;
 }
 
-export interface operations {}
+export type $defs = Record<string, never>;
 
-export interface external {}
+export type external = Record<string, never>;
+
+export type operations = Record<string, never>;
