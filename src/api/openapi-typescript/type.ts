@@ -1,7 +1,7 @@
 import type { paths } from "~/schema/openapi-typescript/schema";
 
 // httpメソッド
-export type Methods = "get" | "post" | "put" | "delete";
+export type Methods = "get" | "post" | "put" | "patch" | "delete";
 
 // endpointのURL
 export type Endpoint<M extends Methods> = {
