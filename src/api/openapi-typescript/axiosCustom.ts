@@ -5,7 +5,7 @@ import {
   PathParams,
   QueryParams,
   RequestBody,
-  Response,
+  SuccessResponse,
 } from "./type";
 
 const BASE_URL = "http://localhost:3000/api";
@@ -30,7 +30,7 @@ export const customAxios = async <M extends Methods, E extends Endpoint<M>>({
     ? getDynamicEndpoint(endpoint, pathParams)
     : endpoint;
 
-  return await axios[methods]<Response<M, E>>(
+  return await axios[methods]<SuccessResponse<M, E>>(
     `${BASE_URL}${dynamicEndpoint}${getQueryParams(queryParams)}`,
     body
   );

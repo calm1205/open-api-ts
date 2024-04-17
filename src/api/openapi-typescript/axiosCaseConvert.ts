@@ -5,7 +5,7 @@ import {
   PathParams,
   QueryParams,
   RequestBody,
-  Response,
+  SuccessResponse,
 } from "./type";
 import {
   Snake2Camel,
@@ -36,7 +36,7 @@ export const customAxios = async <M extends Methods, E extends Endpoint<M>>({
     ? getDynamicEndpoint(endpoint, camel2SnakeDeep(pathParams))
     : endpoint;
 
-  const response = await axios[methods]<Snake2Camel<Response<M, E>>>(
+  const response = await axios[methods]<Snake2Camel<SuccessResponse<M, E>>>(
     `${BASE_URL}${dynamicEndpoint}${getQueryParams(queryParams)}`,
     body
   );

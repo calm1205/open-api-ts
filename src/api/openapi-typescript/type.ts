@@ -30,21 +30,34 @@ export type QueryParams<M extends Methods> = {
     : never;
 }[Endpoint<M>];
 
-// 2xx番台のレスポンス
-export type Response<
+type SuccessCode = 200 | 201 | 202 | 204 | 205 | 206 | 207 | 208 | 226;
+
+export type Api<
   M extends Methods,
   E extends Endpoint<M>
-> = M extends keyof paths[E]
-  ? paths[E][M] extends {
-      responses: {
-        200: { content: { "application/json": infer T } };
-      };
-    }
-    ? T extends object
-      ? T
-      : never
+> = M extends keyof paths[Endpoint<M>] ? paths[E][M] : never;
+
+type Response<M extends Methods, E extends Endpoint<M>> = {
+  [K in keyof Api<M, E>]: K extends "responses" ? Api<M, E>[K] : never;
+}[keyof Api<M, E>];
+
+type PickContent<T> = T extends { content: { "application/json": infer U } }
+  ? U extends object
+    ? U
     : never
   : never;
+
+// 2xx番台のレスポンス
+export type SuccessResponse<
+  M extends Methods,
+  E extends Endpoint<M>
+> = PickContent<
+  {
+    [K in keyof Response<M, E>]: K extends SuccessCode
+      ? Response<M, E>[K]
+      : never;
+  }[keyof Response<M, E>]
+>;
 
 // リクエストボディ
 export type RequestBody<
